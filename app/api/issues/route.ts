@@ -1,12 +1,9 @@
 import prisma from "@/prisma/client";
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
+import { createIssueSchema } from "@/app/validationSchemas";
 
 // Only need the title and the description because the server is generating the id, created and updated fields
-const createIssueSchema = z.object({
-  title: z.string().min(1, "Title is required").max(255),
-  description: z.string().min(1, "Description is required"),
-});
 
 export async function POST(request: NextRequest) {
   const body = await request.json();
