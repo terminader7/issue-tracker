@@ -1,9 +1,6 @@
 import prisma from "@/prisma/client";
 import { NextRequest, NextResponse } from "next/server";
-import { z } from "zod";
 import { createIssueSchema } from "@/app/validationSchemas";
-
-// Only need the title and the description because the server is generating the id, created and updated fields
 
 export async function POST(request: NextRequest) {
   const body = await request.json();
